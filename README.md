@@ -1,4 +1,6 @@
-# robomimic LSTM 末端执行器轨迹预测
+# LSTM-Machinery-Trajectory-prediction
+
+基于 LSTM 的机械轨迹预测：使用 robomimic 数据预测机器人末端执行器未来三维位置。
 
 Git 归档范围、数据恢复方式及最新实验状态见 [Git 归档说明](docs/GIT_ARCHIVE.md)。数据集和训练输出保留在本地，不随 Git 仓库分发。
 
