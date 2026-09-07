@@ -1,0 +1,53 @@
+# Datasets and generated experiment outputs (kept locally)
+/robomimic_datasets/
+/outputs*/
+*.hdf5
+*.h5
+*.hdf
+*.npz
+*.npy
+
+# Model checkpoints and serialized artifacts
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+*.onnx
+
+# Python caches, test reports and build products
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Local environments, editor settings and credentials
+.venv/
+venv/
+env/
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example
+
+# Temporary files, logs and archives
+*.log
+*.tmp
+*.bak
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+~$*
+.DS_Store
+Thumbs.db
+desktop.ini

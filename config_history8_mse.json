@@ -1,0 +1,23 @@
+{
+  "dataset_path": "robomimic_datasets/low_dim_dense_v15.hdf5",
+  "seed": 42,
+  "history_length": 8,
+  "prediction_horizon": 12,
+  "hidden_dim": 128,
+  "num_layers": 1,
+  "dropout": 0.2,
+  "learning_rate": 0.0003,
+  "batch_size": 64,
+  "epochs": 40,
+  "patience": 8,
+  "num_workers": 0,
+  "optimizer": "adamw",
+  "weight_decay": 0.0001,
+  "loss": "mse",
+  "gradient_clip_norm": 1.0,
+  "scheduler": {
+    "factor": 0.5,
+    "patience": 2,
+    "min_lr": 0.000001
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "base_config": "config_fine_tuning.json",
+  "output_dir": "outputs_fine_tuning",
+  "selection_metric": "validation_ade",
+  "screening": {
+    "max_trials": 24,
+    "epochs": 20,
+    "patience": 6,
+    "seed": 20260905
+  },
+  "search_space": {
+    "history_length": [8],
+    "hidden_dim": [128, 64],
+    "num_layers": [1],
+    "learning_rate": [0.0003, 0.0001],
+    "batch_size": [64],
+    "dropout": [0.2, 0.1, 0.3],
+    "weight_decay": [0.0001, 0.001]
+  },
+  "final": {
+    "epochs": 40,
+    "patience": 8
+  },
+  "reference": {
+    "source": "outputs_history_window_tuning/tuning_results.json",
+    "validation_ade": 0.0321748111506032,
+    "validation_fde": 0.05290268756621775,
+    "test_ade": 0.03265489482484609,
+    "test_fde": 0.053512655828082845,
+    "note": "Historical single-seed reference only; not used for candidate selection."
+  }
+}

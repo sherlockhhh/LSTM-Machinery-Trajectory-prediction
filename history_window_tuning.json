@@ -1,0 +1,22 @@
+{
+  "base_config": "config.json",
+  "output_dir": "outputs_history_window_tuning",
+  "selection_metric": "validation_ade",
+  "screening": {
+    "max_trials": 3,
+    "epochs": 10,
+    "patience": 4,
+    "seed": 20260830
+  },
+  "search_space": {
+    "history_length": [8, 12, 20],
+    "hidden_dim": [128],
+    "num_layers": [1],
+    "learning_rate": [0.0003],
+    "batch_size": [64]
+  },
+  "final": {
+    "epochs": 40,
+    "patience": 8
+  }
+}
