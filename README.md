@@ -96,9 +96,6 @@ MAE、ADE、FDE 的单位为米，MSE 的单位为平方米；ADE 是所有未�
 - `tuning_results.json`：候选参数及其验证集排序。
 - `trajectory_example.png` / `representative_trajectory_comparison.png`：预测轨迹与真实轨迹的三维对比。
 
-## 下一步建议
-
-现有结果支持优先保留较短历史窗口和 Smooth L1，但尚未证明其在其他随机种子或数据分布上稳定领先。按当前工作安排，跳过额外的多随机种子复核，直接执行下面的局部参数搜索。
 
 ## 当前工作：8 帧模型局部精调（2026-09-05）
 
@@ -136,26 +133,3 @@ Set-Location 'E:\LSTM_trajectory_prediction'
 & 'D:\Anaconda\envs\traisformer\python.exe' hyperparameter_tuning.py --tuning-config fine_tuning_config.json --dry-run
 ```
 
-### 暂停和继续
-
-按 `Ctrl+C` 停止后，再执行同一条带 `--resume` 的启动命令。已完成的候选和已完成的正式复训会跳过；**中断的那一组从第 1 轮重新训练**，不恢复其优化器状态。
-
-续跑会核对配置、代码指纹和数据文件大小/修改时间；如果中途修改了搜索设置或训练代码，需要还原原设置，或通过 `--output-dir outputs_fine_tuning_v2` 使用新目录。数据指纹不是完整内容哈希，不要原地替换数据文件。旧版实验目录没有本轮的续跑清单，不能直接作为新搜索的续跑目录。
-
-同一结果目录一次只运行一个训练进程；想在已有任务运行时修改代码，应先停止该进程。数据预处理结果会在同一进程内复用，重启后重新准备一次。
-
-### 训练后交给我分析的文件
-
-优先提供 `outputs_fine_tuning/tuning_results.json` 和 `outputs_fine_tuning/summary.md`，或直接让我读取该目录。
-
-| 文件 | 内容 |
-| --- | --- |
-| `tuning_results.json` | 实时完成状态、候选排名、最优参数和最终指标 |
-| `leaderboard.csv` | 可用 Excel 打开的排名表，包含耗时、参数量和实际训练轮数 |
-| `summary.md` | 中文结果摘要及相对历史参考的变化；负提升表示结果变差 |
-| `search_manifest.json` | 本批实验的配置、数据标识和代码指纹 |
-| `trials/trial_XXX/` | 各组权重、逐轮历史、验证指标、完整配置和数据划分 |
-| `best_config.json` | 正式复训的完整参数 |
-| `best_model/` | 正式复训的权重、训练历史、验证及测试指标、轨迹图 |
-
-`training_history.json` 在每轮结束后保存；完成一组后更新总排名。因此中途停止也能分析已经完成的实验。`metrics.json` 在一组成功完成后才写入，避免把仅有部分训练日志的目录误当作已完成。
